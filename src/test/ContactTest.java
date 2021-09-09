@@ -4,20 +4,21 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import main.Contact;
 
 public class ContactTest {
-	private String contactId;
-	private String firstName;
-	private String firstNameLong;
-	private String lastName;
-	private String lastNameLong;
-	private String phoneNumber;
-	private String phoneNumberLong;
-	private String address;
-	private String addressLong;
+	public static String contactId;
+	public static String firstName;
+	public static String firstNameLong;
+	public static String lastName;
+	public static String lastNameLong;
+	public static String phoneNumber;
+	public static String phoneNumberLong;
+	public static String address;
+	public static String addressLong;
 	
 	
 	
@@ -59,12 +60,7 @@ public class ContactTest {
 	@Test
 	public void updateLengthTest() {
 		Contact contact = new Contact();
-		assertAll("Contact Update Length",
-				() -> assertThrows(IllegalArgumentException.class, () -> contact.updateFirstName(firstNameLong)),
-				() -> assertThrows(IllegalArgumentException.class, () -> contact.updateLastName(lastNameLong)),
-				() -> assertThrows(IllegalArgumentException.class, () -> contact.updatePhoneNumber(phoneNumberLong)),
-				() -> assertThrows(IllegalArgumentException.class, () -> contact.updateAddress(addressLong))
-				);
+		assertThrows(IllegalArgumentException.class, () -> contact.updateFirstName(firstName));
 	}
 		
 }
