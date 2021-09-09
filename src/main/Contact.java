@@ -1,3 +1,4 @@
+package main;
 
 public class Contact {
 
@@ -14,6 +15,43 @@ public class Contact {
 	private int CONTACT_ADDRESS_LENGTH =30;
 	
 
+	public Contact() {}
+	public Contact(String contactId) {
+		this.contactId = contactId;
+		this.firstName = null;
+		this.lastName = null;
+		this.phoneNumber = null;
+		this.address = null;
+	}
+	public Contact(String contactId, String firstName) {
+		this.contactId = contactId;
+		this.firstName = firstName;
+		this.lastName = null;
+		this.phoneNumber = null;
+		this.address = null;
+	}
+	public Contact(String contactId, String firstName, String lastName) {
+		this.contactId = contactId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = null;
+		this.address = null;
+	}
+	public Contact(String contactId, String firstName, String lastName, String phoneNumber) {
+		this.contactId = contactId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.address = null;
+	}
+	public Contact(String contactId, String firstName, String lastName, String phoneNumber, String address) {
+		this.contactId = contactId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+	}
+		
 	
 	public void createContactId(String contactId) {
 		if(contactId == null) {
