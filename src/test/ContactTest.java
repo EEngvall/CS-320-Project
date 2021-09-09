@@ -1,6 +1,9 @@
+package test;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+
+import Contact;
 
 public class ContactTest {
 
@@ -8,7 +11,7 @@ public class ContactTest {
 	public void updateFirstNameTest() {
 		Contact contact = new Contact();
 		contact.updateFirstName("Erik");
-		String output = contact.firstName;
+		String output = contact.getFirstName();
 		assertEquals("Erik", output);
 	}
 	
@@ -16,7 +19,7 @@ public class ContactTest {
 	public void updateLastNameTest() {
 		Contact contact = new Contact();
 		contact.updateLastName("Engvall");
-		String output = contact.lastName;
+		String output = contact.getLastName();
 		assertEquals("Engvall", output);
 	}
 	
@@ -24,7 +27,7 @@ public class ContactTest {
 	public void updateFirstNameLengthTest() {
 		Contact contact = new Contact();
 		contact.updateFirstName("Erikengvall");
-		System.out.println(contact.firstName);
+		System.out.println(contact.getFirstName());
 
 		
 	}
@@ -33,16 +36,16 @@ public class ContactTest {
 	public void updateLastNameLengthTest() {
 		Contact contact = new Contact();
 		contact.updateFirstName("Engvallerik");
-		System.out.println(contact.lastName);
+		System.out.println(contact.getLastName());
 		
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void updateFirstNameNullTest() {
 		Contact contact = new Contact();
-		contact.updateFirstName(null);
-		System.out.println(contact.firstName);
-		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			contact.updateFirstName(null);
+		});
 	}
 	
 	@Test

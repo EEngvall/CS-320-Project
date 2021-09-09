@@ -6,10 +6,15 @@ public class ContactService {
 
 
 	//Comment to create change for git
-	String uniqueId;
+	public static int uniqueId = 0;
 	List<Contact> contactList = new ArrayList<>();
 	
-	uniqueId = UUID.randomUUID().toString();
-	System.out.println(uniqueId);
+	public void addContact() {
+		Contact contact = new Contact();
+		String contactIDString = Integer.toString(uniqueId);
+		uniqueId++;
+	}
+	
+	
 	
 }
