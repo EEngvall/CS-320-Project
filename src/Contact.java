@@ -2,11 +2,11 @@
 public class Contact {
 
 	//Comments
-	private String contactId;
-	private String firstName;
-	private String lastName;
-	private String phoneNumber;
-	private String address;
+	String contactId;
+	String firstName;
+	String lastName;
+	String phoneNumber;
+	String address;
 	private int CONTACT_ID_LENGTH = 10;
 	private int CONTACT_FIRST_NAME_LENGTH = 10;
 	private int CONTACT_LAST_NAME_LENGTH = 10;
