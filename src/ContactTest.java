@@ -51,7 +51,6 @@ public class ContactTest {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			contact.updatePhoneNumber("01234567899");
 		});
-		System.out.println()
 	}
 		
 }
