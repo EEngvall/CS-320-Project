@@ -2,12 +2,13 @@ package main;
 
 public class Contact {
 
-	//Comments
+	//COntact variables to meet necessary criteria
 	private String contactId;
 	private String firstName;
 	private String lastName;
 	private String phoneNumber;
 	private String address;
+	//Contact variables to check for valid input
 	private int CONTACT_ID_LENGTH = 10;
 	private int CONTACT_FIRST_NAME_LENGTH = 10;
 	private int CONTACT_LAST_NAME_LENGTH = 10;
@@ -15,6 +16,7 @@ public class Contact {
 	private int CONTACT_ADDRESS_LENGTH =30;
 	
 
+	//Constructors for each combination of creating a new contact
 	public Contact() {}
 	public Contact(String contactId) {
 		this.contactId = contactId;
@@ -52,8 +54,8 @@ public class Contact {
 		this.address = address;
 	}
 		
-	
-	public void createContactId(String contactId) {
+	//Methods to Update and Return Contact ID, First Name, Last Name, Phone Number and Address. 
+	public void updateContactId(String contactId) {
 		if(contactId == null) {
 			throw new IllegalArgumentException("Contact ID can not be empty.");
 		} else if (contactId.length() > CONTACT_ID_LENGTH) {

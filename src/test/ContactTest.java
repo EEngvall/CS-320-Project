@@ -37,6 +37,7 @@ public class ContactTest {
 		
 	}
 
+	//Test for equality with given set up variables
 	@Test
 	public void updateTest() {
 		Contact contact = new Contact(contactId, firstName, lastName, phoneNumber, address);
@@ -47,6 +48,8 @@ public class ContactTest {
 				() -> assertEquals(phoneNumber, contact.getPhoneNumber()),
 				() -> assertEquals(address, contact.getAddress()));
 	}
+	
+	//Test for confirmation of null variables before any setup. 
 	@Test
 	public void updateNullTest() {
 		Contact contact = new Contact();
@@ -57,10 +60,36 @@ public class ContactTest {
 				() -> assertNull(contact.getPhoneNumber()),
 				() -> assertNull(contact.getAddress()));
 	}
+	
+	//Test for invalid length of First Name input
 	@Test
-	public void updateLengthTest() {
+	public void updateFirstNameLengthTest() {
 		Contact contact = new Contact();
-		assertThrows(IllegalArgumentException.class, () -> contact.updateFirstName(firstName));
+		assertThrows(IllegalArgumentException.class, () -> contact.updateFirstName(firstNameLong));
 	}
+	
+	//Test for invalid length of Last name input. 
+	@Test
+	public void updateLastNameLengthTest() {
+		Contact contact = new Contact();
+		assertThrows(IllegalArgumentException.class, () -> contact.updateLastName(lastNameLong));
+	}
+	
+	//Test for invalid length of phone number input
+	@Test
+	public void updatePhoneNumberLengthTest() {
+		Contact contact = new Contact();
+		assertThrows(IllegalArgumentException.class, () -> contact.updatePhoneNumber(phoneNumberLong));
+	}
+	
+	//Test for invalid length of address input.
+	@Test
+	public void updateAddressLengthTest() {
+		Contact contact = new Contact();
+		assertThrows(IllegalArgumentException.class, () -> contact.updateAddress(addressLong));
+		
+	}
+		
+	
 		
 }
