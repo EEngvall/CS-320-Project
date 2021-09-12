@@ -25,90 +25,79 @@ public class Contact {
 	}
 	public Contact(String contactId, String firstName) {
 		this.contactId = contactId;
-		this.firstName = firstName;
+		updateFirstName(firstName);
 		this.lastName = null;
 		this.phoneNumber = null;
 		this.address = null;
 	}
 	public Contact(String contactId, String firstName, String lastName) {
 		this.contactId = contactId;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		updateFirstName(firstName);
+		updateLastName(lastName);
 		this.phoneNumber = null;
 		this.address = null;
 	}
 	public Contact(String contactId, String firstName, String lastName, String phoneNumber) {
 		this.contactId = contactId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
+		updateFirstName(firstName);
+		updateLastName(lastName);
+		updatePhoneNumber(phoneNumber);
 		this.address = null;
 	}
 	public Contact(String contactId, String firstName, String lastName, String phoneNumber, String address) {
 		this.contactId = contactId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
-		this.address = address;
+		updateFirstName(firstName);
+		updateLastName(lastName);
+		updatePhoneNumber(phoneNumber);
+		updateAddress(address);
 	}
 		
 	
 	public void createContactId(String contactId) {
-		if(contactId == null) {
-			throw new IllegalArgumentException("Contact ID can not be empty.");
-		} else if (contactId.length() > CONTACT_ID_LENGTH) {
-			throw new IllegalArgumentException("Contact ID can not be longer than " + CONTACT_ID_LENGTH + " characters.");
-		} else {
-			this.contactId = contactId;
+		if(contactId == null || contactId.length() > CONTACT_ID_LENGTH) {
+			throw new IllegalArgumentException("Contact ID can not be empty or greater than " + CONTACT_ID_LENGTH + " characters.");
 		}
+			this.contactId = contactId;
 	}
+	
+	
 	public String getContactID() {
 		return contactId;
 	}
 	public void updateFirstName(String firstName) {
-		if (firstName == null) {
-			throw new IllegalArgumentException("First name can not be empty");
-		} else if (firstName.length() > CONTACT_FIRST_NAME_LENGTH) {
-			throw new IllegalArgumentException("First name can not be longer than " + CONTACT_FIRST_NAME_LENGTH + "characters.");
-		} else {
+		if (firstName == null || firstName.length() > CONTACT_FIRST_NAME_LENGTH) {
+			throw new IllegalArgumentException("Contact first name can not be empty or greater than " + CONTACT_FIRST_NAME_LENGTH + " characters.");
+		} 
 			this.firstName = firstName;
-		}
+		
 	}
 	public String getFirstName() {
 		return firstName;
 	}
 	public void updateLastName(String lastName) {
-		if (lastName == null) {
-			throw new IllegalArgumentException("Last name can not be null");
-		} else if (lastName.length() > CONTACT_LAST_NAME_LENGTH) {
-			throw new IllegalArgumentException("Last name can not be more than " + CONTACT_LAST_NAME_LENGTH + " characters.");
-		} else {
+		if (lastName == null || lastName.length() > CONTACT_LAST_NAME_LENGTH) {
+			throw new IllegalArgumentException("Contact last name can not be empty or greater than " + CONTACT_LAST_NAME_LENGTH + " characters.");
+		} 
 			this.lastName = lastName;
-		}
+		
 	}
 	public String getLastName() {
 		return lastName;
 	}
 	public void updatePhoneNumber(String phoneNumber) {
-		if (phoneNumber == null) {
-			throw new IllegalArgumentException("Phone number can not be empty");
-		} else if (phoneNumber.length() > CONTACT_PHONE_LENGTH) {
-			throw new IllegalArgumentException("Phone number can not be more than " + CONTACT_PHONE_LENGTH + " digits.");
-		} else {
+		if (phoneNumber == null || phoneNumber.length() > CONTACT_PHONE_LENGTH) {
+			throw new IllegalArgumentException("Contact phone number can not be empty or greater than " + CONTACT_PHONE_LENGTH + " characters.");		} 
 			this.phoneNumber = phoneNumber;
-		}
+		
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	public void updateAddress(String address) {
-		if (address == null) {
-			throw new IllegalArgumentException("Address can not be empty");
-		} else if (address.length() > CONTACT_ADDRESS_LENGTH) {
-			throw new IllegalArgumentException("Address can not be more than " + CONTACT_ADDRESS_LENGTH + " characters.");
-		} else {
+		if (address == null || address.length() > CONTACT_ADDRESS_LENGTH) {
+			throw new IllegalArgumentException("Contact address can not be empty or greater than " + CONTACT_ADDRESS_LENGTH + " characters.");		} 
 			this.address = address;
-		}
+		
 	}
 	public String getAddress() {
 		return address;
