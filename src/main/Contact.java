@@ -14,37 +14,38 @@ public class Contact {
 	private int CONTACT_LAST_NAME_LENGTH = 10;
 	private int CONTACT_PHONE_LENGTH = 10;
 	private int CONTACT_ADDRESS_LENGTH =30;
+	private String INITIALIZED_VALUE = "DEFUALT";
 	
 
 	//Constructors for each combination of creating a new contact
 	public Contact() {}
 	public Contact(String contactId) {
 		this.contactId = contactId;
-		this.firstName = null;
-		this.lastName = null;
-		this.phoneNumber = null;
-		this.address = null;
+		this.firstName = INITIALIZED_VALUE;
+		this.lastName = INITIALIZED_VALUE;
+		this.phoneNumber = INITIALIZED_VALUE;
+		this.address = INITIALIZED_VALUE;
 	}
 	public Contact(String contactId, String firstName) {
 		this.contactId = contactId;
 		updateFirstName(firstName);
-		this.lastName = null;
-		this.phoneNumber = null;
-		this.address = null;
+		this.lastName = INITIALIZED_VALUE;
+		this.phoneNumber = INITIALIZED_VALUE;
+		this.address = INITIALIZED_VALUE;
 	}
 	public Contact(String contactId, String firstName, String lastName) {
 		this.contactId = contactId;
 		updateFirstName(firstName);
 		updateLastName(lastName);
-		this.phoneNumber = null;
-		this.address = null;
+		this.phoneNumber = INITIALIZED_VALUE;
+		this.address = INITIALIZED_VALUE;
 	}
 	public Contact(String contactId, String firstName, String lastName, String phoneNumber) {
 		this.contactId = contactId;
 		updateFirstName(firstName);
 		updateLastName(lastName);
 		updatePhoneNumber(phoneNumber);
-		this.address = null;
+		this.address = INITIALIZED_VALUE;
 	}
 	public Contact(String contactId, String firstName, String lastName, String phoneNumber, String address) {
 		this.contactId = contactId;
@@ -54,34 +55,18 @@ public class Contact {
 		updateAddress(address);
 	}
 		
-<<<<<<< HEAD
-	//Methods to Update and Return Contact ID, First Name, Last Name, Phone Number and Address. 
-	public void updateContactId(String contactId) {
-		if(contactId == null) {
-			throw new IllegalArgumentException("Contact ID can not be empty.");
-		} else if (contactId.length() > CONTACT_ID_LENGTH) {
-			throw new IllegalArgumentException("Contact ID can not be longer than " + CONTACT_ID_LENGTH + " characters.");
-		} else {
-			this.contactId = contactId;
-=======
-	
-	public void createContactId(String contactId) {
-		if(contactId == null || contactId.length() > CONTACT_ID_LENGTH) {
-			throw new IllegalArgumentException("Contact ID can not be empty or greater than " + CONTACT_ID_LENGTH + " characters.");
->>>>>>> branch 'master' of https://EEngvall@bitbucket.org/EEngvall/cs-320-project.git
-		}
-			this.contactId = contactId;
-	}
-	
 	
 	public String getContactID() {
 		return contactId;
 	}
 	public void updateFirstName(String firstName) {
-		if (firstName == null || firstName.length() > CONTACT_FIRST_NAME_LENGTH) {
-			throw new IllegalArgumentException("Contact first name can not be empty or greater than " + CONTACT_FIRST_NAME_LENGTH + " characters.");
-		} 
-			this.firstName = firstName;
+		if (firstName == null) {
+			throw new IllegalArgumentException("First name can not be null.");
+		} else if (firstName.length() > CONTACT_FIRST_NAME_LENGTH) {
+			throw new IllegalArgumentException("First name is too long");
+		} else {
+			this.firstName=firstName;
+		}
 		
 	}
 	public String getFirstName() {

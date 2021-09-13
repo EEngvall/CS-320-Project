@@ -4,14 +4,36 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		//Main method for visual reference of output and variable values.
+		/**Main method for visual reference of output and variable values.
 		ContactService service = new ContactService();
-		Contact contact = new Contact("123456789", "Erik", "Engvall", "2094177238", "2501 Marlee Dr");
-		System.out.println("Contact ID: " + contact.getContactID());
-		System.out.println("First Name: " + contact.getFirstName());
-		System.out.println("Last Name: " + contact.getLastName());
-		System.out.println("Phone Number: " + contact.getPhoneNumber());
-		System.out.println("Address: " + contact.getAddress());
+		service.addContact("Erik", "Engvall", "2094177238", "2501 Marlee Dr");
+		String newContactIdString = service.contactList.get(0).getContactID();
+		System.out.println(service.contactList.get(0).getContactID());
+		System.out.println(service.contactList.get(0).getFirstName());
+		System.out.println(service.contactList.get(0).getLastName());
+		System.out.println(service.contactList.get(0).getPhoneNumber());
+		System.out.println(service.contactList.get(0).getAddress());
+		try {
+			System.out.println(service.findContactById(newContactIdString).getFirstName());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			service.updateContactFirstName(newContactIdString, "Amber");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			System.out.println(service.findContactById(newContactIdString).getFirstName());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+**/
 	}
 
 }
