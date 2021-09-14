@@ -22,6 +22,9 @@ public class ContactService {
 		Contact contact = new Contact(newUniqueId(), firstName, lastName, phoneNumber, address);
 		contactList.add(contact);
 	}
+	public void removeContact(String contactId) throws Exception {
+		contactList.remove(findContactById(contactId));
+	}
 	
 	public Contact findContactById(String contactId) throws Exception {
 		int index = 0;
@@ -40,6 +43,12 @@ public class ContactService {
 	
 	public void updateContactLastName(String id, String newLastName) throws Exception {
 		findContactById(id).updateFirstName(newLastName);
+	}
+	public void updateContactPhoneNumber(String id, String newPhoneNumber) throws Exception {
+		findContactById(id).updateFirstName(newPhoneNumber);
+	}
+	public void updateContactAddress(String id, String newAddress) throws Exception {
+		findContactById(id).updateFirstName(newAddress);
 	}
 	
 	
