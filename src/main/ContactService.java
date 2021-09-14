@@ -10,11 +10,12 @@ public class ContactService {
 
 	//Comment to create change for git
 	public String uniqueId;
+	public int contactIdMaxLength = 10;
 	List<Contact> contactList = new ArrayList<>();
 	
 	private String newUniqueId() {
 		return uniqueId = UUID.randomUUID().toString().substring(
-		               0, 10);
+		               0, contactIdMaxLength);
 	}
 	
 	

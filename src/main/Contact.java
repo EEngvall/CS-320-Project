@@ -60,13 +60,11 @@ public class Contact {
 		return contactId;
 	}
 	public void updateFirstName(String firstName) {
-		if (firstName == null) {
-			throw new IllegalArgumentException("First name can not be null.");
-		} else if (firstName.length() > CONTACT_FIRST_NAME_LENGTH) {
-			throw new IllegalArgumentException("First name is too long");
-		} else {
+		if (firstName == null || firstName.length() > CONTACT_FIRST_NAME_LENGTH) {
+			throw new IllegalArgumentException("Contact first name can not be empty or greater than " + CONTACT_FIRST_NAME_LENGTH + " characters.");
+		} 
 			this.firstName=firstName;
-		}
+		
 		
 	}
 	public String getFirstName() {
@@ -83,8 +81,8 @@ public class Contact {
 		return lastName;
 	}
 	public void updatePhoneNumber(String phoneNumber) {
-		if (phoneNumber == null || phoneNumber.length() > CONTACT_PHONE_LENGTH) {
-			throw new IllegalArgumentException("Contact phone number can not be empty or greater than " + CONTACT_PHONE_LENGTH + " characters.");		} 
+		if (phoneNumber == null || phoneNumber.length() != CONTACT_PHONE_LENGTH) {
+			throw new IllegalArgumentException("Contact phone number can not be empty and must be " + CONTACT_PHONE_LENGTH + " characters in lnegth.");		} 
 			this.phoneNumber = phoneNumber;
 		
 	}

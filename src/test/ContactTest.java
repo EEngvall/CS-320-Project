@@ -29,7 +29,7 @@ public class ContactTest {
 		firstNameLong = "Erik0000000";
 		lastName = "Engvall";
 		lastNameLong = "Engvall0000";
-		phoneNumber = "123456789";
+		phoneNumber = "1234567890";
 		phoneNumberLong = "+1234567890";
 		address = "2501 Marlee Dr";
 		addressLong = " 2501 Marlee Dr is too long for this test";
