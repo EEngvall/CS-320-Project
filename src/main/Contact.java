@@ -14,7 +14,7 @@ public class Contact {
 	private int CONTACT_LAST_NAME_LENGTH = 10;
 	private int CONTACT_PHONE_LENGTH = 10;
 	private int CONTACT_ADDRESS_LENGTH =30;
-	private String INITIALIZED_VALUE = "DEFUALT";
+	private String INITIALIZED_VALUE = "DEFAULT";
 	
 
 	//Constructors for each combination of creating a new contact

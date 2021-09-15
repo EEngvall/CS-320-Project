@@ -1,11 +1,10 @@
 package test;
-import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertAll;
 
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import main.Contact;
 
@@ -28,19 +27,18 @@ public class ContactTest {
 		firstName = "Erik";
 		firstNameLong = "Erik0000000";
 		lastName = "Engvall";
-		lastNameLong = "Engvall0000";
+		lastNameLong = "Engvall00000";
 		phoneNumber = "1234567890";
 		phoneNumberLong = "+1234567890";
 		address = "2501 Marlee Dr";
 		addressLong = " 2501 Marlee Dr is too long for this test";
-		
+		System.out.println("Setting up...");
 		
 	}
 
 	//Test for equality with given set up variables
 	@Test
 	public void updateTest() {
-		setUp();
 		Contact contact = new Contact(contactId, firstName, lastName, phoneNumber, address);
 		assertAll("Contact Update",
 				() -> assertEquals(contactId, contact.getContactID()),
@@ -65,7 +63,6 @@ public class ContactTest {
 	//Test for invalid length of First Name input
 	@Test
 	public void updateFirstNameLengthTest() {
-		setUp();
 		Contact contact = new Contact();
 		assertThrows(IllegalArgumentException.class, () -> contact.updateFirstName(firstNameLong));
 	}
@@ -73,7 +70,6 @@ public class ContactTest {
 	//Test for invalid length of Last name input. 
 	@Test
 	public void updateLastNameLengthTest() {
-		setUp();
 		Contact contact = new Contact();
 		assertThrows(IllegalArgumentException.class, () -> contact.updateLastName(lastNameLong));
 	}
@@ -81,7 +77,6 @@ public class ContactTest {
 	//Test for invalid length of phone number input
 	@Test
 	public void updatePhoneNumberLengthTest() {
-		setUp();
 		Contact contact = new Contact();
 		assertThrows(IllegalArgumentException.class, () -> contact.updatePhoneNumber(phoneNumberLong));
 	}
@@ -89,7 +84,6 @@ public class ContactTest {
 	//Test for invalid length of address input.
 	@Test
 	public void updateAddressLengthTest() {
-		setUp();
 		Contact contact = new Contact();
 		assertThrows(IllegalArgumentException.class, () -> contact.updateAddress(addressLong));
 		
