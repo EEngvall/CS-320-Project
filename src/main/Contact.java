@@ -17,7 +17,7 @@ public class Contact {
 	private String INITIALIZED_VALUE = "DEFAULT";
 	
 
-	//Constructors for each combination of creating a new contact
+	//Constructors for each combination of creating a new contact, however only the final one should be used to avoid empty or null values as each value is required.
 	public Contact() {}
 	public Contact(String contactId) {
 		this.contactId = contactId;
@@ -55,10 +55,12 @@ public class Contact {
 		updateAddress(address);
 	}
 		
-	
+	//Contact ID is not updatable therefore there is only a get method without a corresponding set method. 
 	public String getContactID() {
 		return contactId;
 	}
+	
+	//Set and get methods for first name.  
 	public void updateFirstName(String firstName) {
 		if (firstName == null || firstName.length() > CONTACT_FIRST_NAME_LENGTH) {
 			throw new IllegalArgumentException("Contact first name can not be empty or greater than " + CONTACT_FIRST_NAME_LENGTH + " characters.");
@@ -70,6 +72,7 @@ public class Contact {
 	public String getFirstName() {
 		return firstName;
 	}
+	//Set and get methods for last name. 
 	public void updateLastName(String lastName) {
 		if (lastName == null || lastName.length() > CONTACT_LAST_NAME_LENGTH) {
 			throw new IllegalArgumentException("Contact last name can not be empty or greater than " + CONTACT_LAST_NAME_LENGTH + " characters.");
@@ -80,6 +83,7 @@ public class Contact {
 	public String getLastName() {
 		return lastName;
 	}
+	//Set and get methods for phone number.
 	public void updatePhoneNumber(String phoneNumber) {
 		if (phoneNumber == null || phoneNumber.length() != CONTACT_PHONE_LENGTH) {
 			throw new IllegalArgumentException("Contact phone number can not be empty and must be " + CONTACT_PHONE_LENGTH + " characters in lnegth.");		} 
@@ -89,6 +93,7 @@ public class Contact {
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
+	//Set and get methods for address. 
 	public void updateAddress(String address) {
 		if (address == null || address.length() > CONTACT_ADDRESS_LENGTH) {
 			throw new IllegalArgumentException("Contact address can not be empty or greater than " + CONTACT_ADDRESS_LENGTH + " characters.");		} 
