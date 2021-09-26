@@ -1,67 +1,77 @@
 package test;
 
-import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import main.Task;
 
 class TaskTest {
 
-	public String uniqueId;
-	public String taskName;
-	public String taskDescription;
-	public String taskNameLong;
-	public String taskDescriptionLong;
-	
-	
-	//A SetUp method to preset the variables each test will use.
-	@BeforeEach
-	public void setUp() {
-		uniqueId = "1234567890";
-		taskName = "Test Task Name";
-		taskDescription = "Task Description";
-		taskNameLong = "This sentence is too long for the task.";
-		taskDescriptionLong = "This sentence is too long for the task description string and should be an error.";
-		System.out.println("Setting up...");
+	@Test
+	void testCreateTaskSuccess() {
+		Task task = new Task("123456", "Task Name", "Task Description");
+		
+		assertTrue(task != null);
+		assertTrue(task.getTaskId().equals("123456"));
+		assertTrue(task.getTaskName().equals("Task Name"));
+		assertTrue(task.getTaskDescription().equals("Task Description"));
 	}
+	
+	@Test
+	void testCreateTaskIdFails() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new Task("12345678901", "Task Name", "Task Description");
+		});
+	}
+	
+	@Test
+	void testCreateTaskNameFails() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new Task("123456789", "Task Name is way too long for test", "Task Description");
+		});
+	}
+	
+	@Test
+	void testCreateTaskDescriptionFails() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new Task("123456789", "Task Name", "Task Description is too long for the description of the task used to create the task");
+		});
+	}
+	
+	@Test
+	void testUpdateTaskSuccess() {
+		Task task = new Task("123456", "Task Name", "Task Description");
+		
+		task.setTasktName("New Task Name");
+		task.setTaskDescription("New Task Description");
+		
+		assertTrue(task.getTaskId().equals("123456"));
+		assertTrue(task.getTaskName().equals("New Task Name"));
+		assertTrue(task.getTaskDescription().equals("New Task Description"));
+	}
+	
+	@Test
+	void testUpdateTaskNameFails() {
+		Task task = new Task("123456", "Task Name", "Task Description");
+		assertFalse(task.setTasktName("Task Name Too Long For Task"));
 
-	//Test for the initial constructor
-	@Test
-	void constructorTest() {
-		Task task = new Task(uniqueId, taskName, taskDescription);
-		assertAll("Task Constructor Test", 
-				() -> assertEquals(taskName, task.getTaskName()),
-				() -> assertEquals(taskDescription, task.getTaskDescription()));		
-		System.out.println("Constructor Test...");
 	}
 	
-	//Test to verify that the default values are not null when instantiated even without input.
 	@Test
-	public void updateNullTest() {
-		Task task = new Task();
-		assertAll("Contact Null Update",
-				() -> assertNotNull(task.getTaskId()),
-				() -> assertNotNull(task.getTaskName()),
-				() -> assertNotNull(task.getTaskDescription()));
-		System.out.println("Not null test...");
+	void testUpdateTaskDescriptionFails() {
+		Task task = new Task("123456", "Task Name", "Task Description");
+		assertFalse(task.setTaskDescription("This task description is too long to be used as valid input for a task description"));
+		
 	}
+	
+	
+	
 	
 	//Test to verify the name meets length requirements
-	@Test
-	void updateTaskNameLengthTest() {
-		Task task = new Task();
-		assertThrows(IllegalArgumentException.class, () -> task.updateTaskName(taskNameLong));
-		System.out.println("Name Length Test...");
-	}
+	
 	
 	//Test to verify description meets length requirements. 
-	@Test
-	void updateTaskDescriptionLengthTest() {
-		Task task = new Task();
-		assertThrows(IllegalArgumentException.class, () -> task.updateTaskDescription(taskDescriptionLong));
-		System.out.println("Description Length Test...");
-	}
-
 }
