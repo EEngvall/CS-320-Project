@@ -1,8 +1,10 @@
 package main;
 
+import java.text.ParseException;
+
 public class main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		
 		/**Main method for visual reference of output and variable values.
 		ContactService service = new ContactService();
@@ -34,6 +36,10 @@ public class main {
 			e.printStackTrace();
 		}
 **/
+		
+		Appointment newAppointment = new Appointment("12345","Appointment Description", "2020-10-01");
+		
+		System.out.println(newAppointment.getAppointmentDate());
 	}
 
 }
