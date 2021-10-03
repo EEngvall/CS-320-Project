@@ -14,15 +14,16 @@ import main.AppointmentService;
 
 class AppointmentServiceTest {
 
-	private static AppointmentService appointmentService;
+	private AppointmentService appointmentService;
 	
-	@BeforeAll
-	static void setUp() {
-		appointmentService = AppointmentService.getService();
+	@BeforeEach
+	void setUp() {
+		appointmentService = new AppointmentService();
 	}
 	
 	@Test
 	void testAddAppointmentSuccess() throws ParseException {
+		
 		Appointment appointment = new Appointment("123456", "2022-10-01", "Appointment Description String");
 		assertTrue(appointmentService.addAppointment(appointment));
 		
@@ -47,8 +48,9 @@ class AppointmentServiceTest {
 		assertTrue(cachedAppointment1.getAppointmentDate().equals("2022-10-01"));
 		assertTrue(cachedAppointment1.getAppointmentDescription().equals("Appointment Description String"));	
 		
+		
 		assertTrue(appointmentService.addAppointment(appointment2));
-		Appointment cachedAppointment2 = appointmentService.getAppointment(appointment1.getAppointmentId());
+		Appointment cachedAppointment2 = appointmentService.getAppointment(appointment2.getAppointmentId());
 		
 		assertTrue(cachedAppointment2 != null);
 		assertTrue(cachedAppointment2.getAppointmentId().equals("1234567"));
@@ -100,6 +102,11 @@ class AppointmentServiceTest {
 		String invalidAppointmentIdString = "123";
 		
 		assertFalse(appointmentService.deleteAppointment(invalidAppointmentIdString));
+	}
+	
+	@AfterEach
+	void tearDown() {
+		appointmentService = null;
 	}
 	
 	

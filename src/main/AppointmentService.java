@@ -5,17 +5,13 @@ import java.util.Map;
 
 public class AppointmentService {
 
-	private static AppointmentService reference = new AppointmentService();
 	private final Map<String, Appointment> appointmentList;
 	
-	AppointmentService() {
+	public AppointmentService() {
 		this.appointmentList = new HashMap<String, Appointment>();
 	}
 	
-	public static AppointmentService getService() {
-		return reference;
-	}
-	
+
 	public boolean addAppointment(Appointment appointment) {
 		boolean isSuccess = false;
 		
