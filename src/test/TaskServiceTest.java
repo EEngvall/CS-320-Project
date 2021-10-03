@@ -23,11 +23,12 @@ class TaskServiceTest {
 		Task task = new Task("123456", "Task Name", "Task Description");
 		assertTrue(taskService.addTask(task));
 		
-		Task getTask = taskService.getTask("123456");
+		Task getTask = taskService.getTask(task.getTaskId());
 		
-		assertTrue(getTask.getTaskId().contentEquals(task.getTaskId()));
-		assertTrue(getTask.getTaskName().contentEquals(task.getTaskName()));
-		assertTrue(getTask.getTaskDescription().contentEquals(task.getTaskDescription()));
+		assertTrue(getTask != null);
+		assertTrue(getTask.getTaskId().equals("123456"));
+		assertTrue(getTask.getTaskName().equals("Task Name"));
+		assertTrue(getTask.getTaskDescription().equals("Task Description"));
 	}
 	
 	@Test

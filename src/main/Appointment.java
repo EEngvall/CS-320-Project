@@ -12,7 +12,7 @@ public class Appointment {
 	private int APPOINTMENT_MAX_LENGTH = 50;
 	Date currentDate = new Date();
 	
-	public Appointment(String appointmentId, String appointmentDescription, String appointmentDate) throws ParseException {
+	public Appointment(String appointmentId, String appointmentDate, String appointmentDescription) throws ParseException {
 		boolean isValid = validateInput(appointmentId, 10);
 		
 		if (isValid) {
