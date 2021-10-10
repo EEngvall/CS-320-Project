@@ -9,13 +9,13 @@ import org.junit.jupiter.api.Test;
 import main.TaskService;
 import main.Task;
 
-class TaskServiceTest {
+public class TaskServiceTest {
 
-	private static TaskService taskService;
+	private TaskService taskService;
 	
-	@BeforeAll
-	static void setup() {
-		taskService = TaskService.getService();
+	@BeforeEach
+	void setup() {
+		taskService = new TaskService();
 	}
 	
 	@Test
@@ -23,7 +23,7 @@ class TaskServiceTest {
 		Task task = new Task("123456", "Task Name", "Task Description");
 		assertTrue(taskService.addTask(task));
 		
-		Task getTask = taskService.getTask(task.getTaskId());
+		Task getTask = taskService.getTask("123456");
 		
 		assertTrue(getTask != null);
 		assertTrue(getTask.getTaskId().equals("123456"));

@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import main.Appointment;
 import main.AppointmentService;
 
-class AppointmentServiceTest {
+public class AppointmentServiceTest {
 
 	private AppointmentService appointmentService;
 	

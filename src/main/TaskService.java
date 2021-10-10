@@ -6,17 +6,13 @@ import java.util.Map;
 public class TaskService {
 
 	
-	private static TaskService reference = new TaskService();
 	private final Map<String, Task> taskList;
 	
 	
-	TaskService() {
+	public TaskService() {
 		this.taskList = new HashMap<String, Task>();
 	}
 	
-	public static TaskService getService() {
-		return reference;
-	}
 	
 	public boolean addTask(Task task) {
 		boolean isSuccess = false;
